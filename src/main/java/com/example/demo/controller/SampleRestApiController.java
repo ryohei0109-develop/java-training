@@ -28,7 +28,7 @@ public class SampleRestApiController {
 	}
 	
     /*
-     * エンドポイント: /sample/api/test/xxxx/
+     * エンドポイント: localhost:8080/sample/api/test/xxxx/
      */
     @RequestMapping("/test/{param}")
     private String testPathVariable( @PathVariable String param ) {
@@ -37,7 +37,7 @@ public class SampleRestApiController {
     }
 
     /*
-     * エンドポイント: /sample/api/test?param=xxxx
+     * エンドポイント: localhost:8080/sample/api/test?param=xxxx
      */
     @RequestMapping("/test")
     private String testRequestParam( @RequestParam String param ) {
