@@ -3,6 +3,8 @@ package com.example.demo.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -49,6 +51,12 @@ public class WebApiController {
 		return map;
 	}
 
+	// ファイルダウンロードレスポンス
+    @RequestMapping(value = "hoge4", produces = MediaType.APPLICATION_XML_VALUE)
+    public Resource file2() {
+        return new FileSystemResource("pom.xml");
+    }
+    
 	// エラー発生用エンドポイント
 	@RequestMapping("error")
 	public String testException() throws Exception {
