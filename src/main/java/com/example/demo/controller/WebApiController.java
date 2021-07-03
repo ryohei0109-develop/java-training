@@ -52,11 +52,11 @@ public class WebApiController {
 	}
 
 	// ファイルダウンロードレスポンス
-    @RequestMapping(value = "hoge4", produces = MediaType.APPLICATION_XML_VALUE)
-    public Resource file2() {
-        return new FileSystemResource("pom.xml");
-    }
-    
+	@RequestMapping(value = "hoge4", produces = MediaType.APPLICATION_XML_VALUE)
+	public Resource file2() {
+		return new FileSystemResource("pom.xml");
+	}
+
 	// エラー発生用エンドポイント
 	@RequestMapping("error")
 	public String testException() throws Exception {
@@ -73,7 +73,7 @@ public class WebApiController {
 		errorResponse.message = "API エラー";
 		errorResponse.detail = ex.getMessage();
 		errorResponse.status = status.value();
-		
+
 		return new ResponseEntity<ErrorResponse>(errorResponse, status);
 	}
 }
