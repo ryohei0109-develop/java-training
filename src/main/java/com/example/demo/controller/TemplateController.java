@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.thymeleaf.context.Context;
@@ -42,4 +43,19 @@ public class TemplateController {
 
 	    return message;
 	}
+	
+	@Qualifier("stringTemplateEngine")
+    @Autowired
+    SpringTemplateEngine string;
+	
+    @GetMapping("test/string/{message}") 
+    public String test_string_template(@PathVariable String message) {
+
+        final String template = "path var message＜[[${message}]]＞, by string template engine.";
+
+        var context = new Context();
+        context.setVariable( "message", message );
+
+        return this.string.process( template, context );  
+    }
 }
